@@ -1,6 +1,9 @@
 -- NerdTree
 vim.keymap.set("n", "<C-b>", ":NERDTreeToggle<CR>", { silent = true })
 
+-- Markdown preview
+vim.keymap.set("n", "<leader>mp", "<cmd>RenderMarkdown toggle<cr>", { silent = true, desc = "Markdown Render Toggle" })
+
 ----------------------------------------------------
 -- ウィンドウ分割 (WezTermのペイン分割キーバインドと統一)
 -- WezTerm leader = Ctrl+q
