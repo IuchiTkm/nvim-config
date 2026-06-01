@@ -3,6 +3,7 @@ return {
   lazy = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    vim.schedule(function()
     require("nvim-tree").setup({
       view = {
         width = 30,
@@ -23,5 +24,6 @@ return {
         dotfiles = false,
       },
     })
+    end)
   end,
 }
