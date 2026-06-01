@@ -1,5 +1,5 @@
--- NerdTree
-vim.keymap.set("n", "<C-b>", ":NERDTreeToggle<CR>", { silent = true })
+-- nvim-tree
+vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>", { silent = true })
 
 -- Markdown preview
 vim.keymap.set("n", "<leader>mp", "<cmd>RenderMarkdown toggle<cr>", { silent = true, desc = "Markdown Render Toggle" })
