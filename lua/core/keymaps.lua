@@ -1,6 +1,11 @@
 -- nvim-tree
 vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>", { silent = true })
 
+-- bufferline
+vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", { silent = true })
+vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", { silent = true })
+vim.keymap.set("n", "<leader>w", ":bdelete<CR>", { silent = true })
+
 -- Markdown preview
 vim.keymap.set("n", "<leader>mp", "<cmd>RenderMarkdown toggle<cr>", { silent = true, desc = "Markdown Render Toggle" })
 
