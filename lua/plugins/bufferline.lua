@@ -10,6 +10,18 @@ return {
         show_close_icon = false,
         diagnostics = "nvim_lsp",
       },
+      highlights = {
+        buffer_selected = {
+          fg = "#ffffff",
+          bg = "#3e4451",
+          bold = true,
+          italic = false,
+        },
+        indicator_selected = {
+          fg = "#61afef",
+          bg = "#3e4451",
+        },
+      },
     })
   end,
 }
