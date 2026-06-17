@@ -9,6 +9,7 @@
 - [CopilotChat](#copilotchat) - GitHub Copilot チャット
 - [render-markdown](#render-markdown) - Markdown プレビュー
 - [winresizer](#winresizer) - ウィンドウリサイズ
+- [lazygit.nvim](#lazygitnvim) - Git UI
 
 ---
 
@@ -44,6 +45,11 @@
 | キー | 動作 |
 |------|------|
 | `\mp` | Markdownプレビューのオン/オフ |
+
+### lazygit
+| キー | 動作 |
+|------|------|
+| `\gg` | lazygit を開く |
 
 ---
 
@@ -151,3 +157,55 @@ Markdownファイルをバッファ内でリッチ表示するプラグイン。
 | `h` / `j` / `k` / `l` | ウィンドウ幅・高さを変更 |
 | `Enter` | リサイズモード終了 |
 | `q` | キャンセル |
+
+---
+
+### lazygit.nvim
+
+Git の操作を TUI で行えるプラグイン。別途 lazygit 本体のインストールが必要。
+
+**インストール（初回のみ）**
+
+```powershell
+winget install JesseDuffield.lazygit
+```
+
+| キー | 動作 |
+|------|------|
+| `\gg` | lazygit を開く |
+
+**lazygit 内の主な操作**
+
+| キー | 動作 |
+|------|------|
+| `?` | ヘルプ表示 |
+| `q` | lazygit を閉じる |
+| `Space` | ファイルのステージ/アンステージ |
+| `c` | コミット |
+| `p` | プッシュ |
+| `P` | プル |
+
+---
+
+## プラグインの追加手順
+
+1. `lua/plugins/` に新しい `.lua` ファイルを作成する（例: `lua/plugins/foo.lua`）
+2. 以下の形式で設定を書く
+
+```lua
+return {
+    "author/plugin-name",
+    dependencies = { "依存プラグイン（不要なら省略）" },
+    keys = {
+        { "<leader>xx", "<cmd>コマンド<CR>", desc = "説明" },
+    },
+    config = function()
+        -- 追加設定が必要な場合はここに書く
+    end,
+}
+```
+
+3. Neovim を再起動するか `:Lazy sync` を実行してインストール
+4. キーマップを追加した場合は `lua/core/keymaps.lua` ではなく、上記のように `keys` にまとめて書くのが推奨
+
+> `keys` に書いたプラグインは、そのキーを押すまで読み込まれない（遅延ロード）のでパフォーマンスに優れる。
