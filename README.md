@@ -10,6 +10,7 @@
 - [render-markdown](#render-markdown) - Markdown プレビュー
 - [winresizer](#winresizer) - ウィンドウリサイズ
 - [lazygit.nvim](#lazygitnvim) - Git UI
+- [toggleterm.nvim](#toggletermnvim) - ターミナル
 
 ---
 
@@ -50,6 +51,13 @@
 | キー | 動作 |
 |------|------|
 | `\gg` | lazygit を開く |
+
+### ターミナル
+| キー | 動作 |
+|------|------|
+| `\t` | ターミナルを開く/閉じる |
+| `Ctrl+k` | ターミナルからコードペインへ移動 |
+| `\j` | コードからターミナルペインへ移動 |
 
 ---
 
@@ -184,6 +192,18 @@ winget install JesseDuffield.lazygit
 | `c` | コミット |
 | `p` | プッシュ |
 | `P` | プル |
+
+---
+
+### toggleterm.nvim
+
+画面下部にターミナルを表示するプラグイン。ターミナルを開いたままコードを編集できる。
+
+| キー | 動作 |
+|------|------|
+| `\t` | ターミナルを開く/閉じる |
+| `Ctrl+k`（ターミナル内） | 上のコードペインへ移動 |
+| `\j`（コードペイン） | 下のターミナルペインへ移動 |
 
 ---
 
