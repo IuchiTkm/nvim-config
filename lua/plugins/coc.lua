@@ -21,10 +21,5 @@ return {
         or "<S-TAB>"
     end, { silent = true, noremap = true, expr = true })
 
-    vim.keymap.set("i", "<CR>", function()
-      return vim.fn["coc#pum#visible"]() == 1
-        and vim.fn["coc#pum#confirm"]()
-        or "<CR>"
-    end, { silent = true, noremap = true, expr = true })
   end,
 }
