@@ -18,3 +18,4 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.splitright = true
+vim.opt.wrap = false
