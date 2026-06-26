@@ -11,6 +11,7 @@
 - [winresizer](#winresizer) - ウィンドウリサイズ
 - [lazygit.nvim](#lazygitnvim) - Git UI
 - [toggleterm.nvim](#toggletermnvim) - ターミナル
+- [C# サポート](#c-サポート) - LSP / 補完（.cs ファイル専用）
 
 ---
 
@@ -46,6 +47,17 @@
 | キー | 動作 |
 |------|------|
 | `\mp` | Markdownプレビューのオン/オフ |
+
+### C#（.cs ファイルのみ）
+| キー | 動作 |
+|------|------|
+| `gd` | 定義へジャンプ |
+| `gr` | 参照一覧を表示（`q` で閉じる） |
+| `\rn` | シンボルのリネーム（プロジェクト全体で一括置換） |
+| `K` | ホバードキュメント表示 |
+| `Tab` / `Shift+Tab` | 補完候補を選択 |
+| `Enter` | 補完候補を確定 |
+| `Ctrl+o` | ジャンプ前の場所に戻る |
 
 ### lazygit
 | キー | 動作 |
@@ -204,6 +216,33 @@ winget install JesseDuffield.lazygit
 | `\t` | ターミナルを開く/閉じる |
 | `Ctrl+k`（ターミナル内） | 上のコードペインへ移動 |
 | `\j`（コードペイン） | 下のターミナルペインへ移動 |
+
+---
+
+### C# サポート
+
+`.cs` ファイルを開いたときのみ有効になる C# 専用の LSP・補完設定。`lua/plugins/csharp.lua` で管理。
+
+**構成**
+
+| コンポーネント | 役割 |
+|---|---|
+| `csharp-ls` | C# 言語サーバー（dotnet グローバルツール） |
+| `nvim-cmp` | 補完エンジン |
+| `mason.nvim` | 言語サーバー管理 |
+
+**初回セットアップ（インストール済みの場合は不要）**
+
+```powershell
+dotnet tool install --global csharp-ls --version 0.20.0
+```
+
+> csharp-ls 0.21.0 以降は .NET 10 が必要なため、.NET 9 環境では 0.20.0 を使用する。
+
+**注意事項**
+
+- プロジェクトルート（`.sln` または `.csproj` があるディレクトリ）から Neovim を起動すること
+- coc.nvim は `.cs` ファイルでは自動的に無効化される
 
 ---
 
