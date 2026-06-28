@@ -11,7 +11,7 @@ return {
         require("toggleterm").setup({
             direction = "horizontal",
             size = 15,
-            shell = "pwsh",
+            shell = vim.fn.has("win32") == 1 and "pwsh" or "bash",
         })
 
         -- ノーマルモードからウィンドウ移動（コード→ターミナルも同じキーで）
