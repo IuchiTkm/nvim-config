@@ -13,7 +13,10 @@ local zenhan = get_zenhan_path()
 return {
   "keaising/im-select.nvim",
   event = "VeryLazy",
-  enabled = function() return zenhan ~= "" and vim.fn.executable(zenhan) == 1 end,
+  enabled = function()
+    if vim.fn.filereadable("/.dockerenv") == 1 then return false end
+    return zenhan ~= "" and vim.fn.executable(zenhan) == 1
+  end,
   config = function()
     require("im_select").setup({
       default_im_select = "0",
