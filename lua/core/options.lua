@@ -18,8 +18,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
--- コンテナ/SSH環境ではOSC 52でWindowsクリップボードと連携
-if vim.fn.has("win32") == 0 and vim.fn.has("wsl") == 0 then
+-- Dockerコンテナ内ではOSC 52でWindowsクリップボードと連携
+if vim.fn.filereadable("/.dockerenv") == 1 then
   vim.g.clipboard = {
     name = "OSC 52",
     copy = {
