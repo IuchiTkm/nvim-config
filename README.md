@@ -12,6 +12,9 @@
 - [lazygit.nvim](#lazygitnvim) - Git UI
 - [toggleterm.nvim](#toggletermnvim) - ターミナル
 - [C# サポート](#c-サポート) - LSP / 補完（.cs ファイル専用）
+- [vscode.nvim](#vscodenvim) - VS2022風カラースキーム
+- [nvim-treesitter](#nvim-treesitter) - シンタックスハイライト
+- [lsp_signature.nvim](#lsp_signaturenvim) - 関数シグネチャのポップアップ表示
 
 ---
 
@@ -243,6 +246,37 @@ dotnet tool install --global csharp-ls --version 0.20.0
 
 - プロジェクトルート（`.sln` または `.csproj` があるディレクトリ）から Neovim を起動すること
 - coc.nvim は `.cs` ファイルでは自動的に無効化される
+
+---
+
+### vscode.nvim
+
+VSCode Dark+テーマをベースにしたカラースキーム。VS2022のダークテーマに近い配色を提供する。
+
+- キーワード：青
+- 型・クラス名：水色
+- 文字列：オレンジ
+- コメント：緑（イタリック）
+- メソッド名：黄色
+
+---
+
+### nvim-treesitter
+
+構文解析によって正確なシンタックスハイライトを提供するプラグイン。C#パーサーを含む。
+
+初回起動時に自動でC#パーサーがインストールされる。
+
+---
+
+### lsp_signature.nvim
+
+関数を呼び出すときに、引数のシグネチャをリアルタイムでポップアップ表示するプラグイン。LSP（csharp-ls）と連携して動作する。
+
+```
+void Console.WriteLine(string value)
+                       ^^^^^^^^^^^^  ← 現在入力中の引数をハイライト
+```
 
 ---
 
