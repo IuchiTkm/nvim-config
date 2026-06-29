@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
           if not entry then return nil end
           entry.display = function(e)
             local path = e.filename or ""
-            local limit = 15
+            local limit = 30
             if #path > limit then
               path = "…" .. path:sub(-limit)
             end
