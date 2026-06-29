@@ -11,6 +11,7 @@ return {
         preview = {
           treesitter = false,
         },
+        path_display = { "filename_first" },
       },
     })
 
