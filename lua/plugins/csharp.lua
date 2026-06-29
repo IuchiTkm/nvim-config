@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if not client or client.name ~= "csharp_ls" then return end
     local buf = args.buf
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, silent = true })
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = buf, silent = true })
+    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = buf, silent = true })
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = buf, silent = true })
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buf, silent = true })
   end,
