@@ -12,18 +12,11 @@ return {
           treesitter = false,
         },
         path_display = function(_, path)
-          local tail = vim.fs.basename(path)
-          local dir  = vim.fs.dirname(path)
-          local dir_limit = 30
-          if #dir <= dir_limit then
-            return dir .. "/" .. tail
+          local limit = 25
+          if #path <= limit then
+            return path
           end
-          local truncated = dir:sub(#dir - dir_limit + 2)
-          local slash = truncated:find("/")
-          if slash then
-            return "…" .. truncated:sub(slash) .. "/" .. tail
-          end
-          return "…/" .. tail
+          return "…" .. path:sub(-limit)
         end,
       },
     })
