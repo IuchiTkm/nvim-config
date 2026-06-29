@@ -23,6 +23,9 @@ return {
       filters = {
         dotfiles = false,
       },
+      filesystem_watchers = {
+        ignore_dirs = { ".vs" },
+      },
     })
     end)
   end,
