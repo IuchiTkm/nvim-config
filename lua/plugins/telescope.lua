@@ -16,7 +16,12 @@ return {
           if #path <= limit then
             return path
           end
-          return "…" .. path:sub(#path - limit + 2)
+          local truncated = path:sub(#path - limit + 2)
+          local slash = truncated:find("/")
+          if slash then
+            return "…" .. truncated:sub(slash)
+          end
+          return "…" .. truncated
         end,
       },
     })
