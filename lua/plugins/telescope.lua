@@ -11,7 +11,11 @@ return {
         preview = {
           treesitter = false,
         },
-        path_display = { "filename_first" },
+        path_display = function(_, path)
+          local tail = vim.fs.basename(path)
+          local parent = vim.fs.basename(vim.fs.dirname(path))
+          return parent .. "/" .. tail
+        end,
       },
     })
 
