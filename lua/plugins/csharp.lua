@@ -16,7 +16,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if not client or client.name ~= "csharp_ls" then return end
     local buf = args.buf
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, silent = true })
-    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = buf, silent = true })
+    vim.keymap.set("n", "gr", function()
+      local gen = require("telescope.make_entry").gen_from_quickfix()
+      require("telescope.builtin").lsp_references({
+        entry_maker = function(item)
+          local entry = gen(item)
+          if not entry then return nil end
+          entry.display = function(e)
+            local path = e.filename or ""
+            local limit = 15
+            if #path > limit then
+              path = "…" .. path:sub(-limit)
+            end
+            local text = (e.text or ""):gsub("^%s+", "")
+            return path .. "  " .. text
+          end
+          return entry
+        end,
+      })
+    end, { buffer = buf, silent = true })
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = buf, silent = true })
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buf, silent = true })
   end,
