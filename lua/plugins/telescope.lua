@@ -12,7 +12,7 @@ return {
           treesitter = false,
         },
         path_display = function(_, path)
-          local limit = 25
+          local limit = 15
           if #path <= limit then
             return path
           end
