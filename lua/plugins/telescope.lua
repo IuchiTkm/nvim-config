@@ -12,9 +12,11 @@ return {
           treesitter = false,
         },
         path_display = function(_, path)
-          local tail = vim.fs.basename(path)
-          local parent = vim.fs.basename(vim.fs.dirname(path))
-          return parent .. "/" .. tail
+          local limit = 40
+          if #path <= limit then
+            return path
+          end
+          return "…" .. path:sub(#path - limit + 2)
         end,
       },
     })
