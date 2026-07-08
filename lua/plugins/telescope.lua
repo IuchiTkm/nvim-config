@@ -23,7 +23,12 @@ return {
 
     local builtin = require("telescope.builtin")
 
-    vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+    local fd_path = vim.fn.expand("~\\AppData\\Local\\Microsoft\\WinGet\\Packages\\sharkdp.fd_Microsoft.Winget.Source_8wekyb3d8bbwe\\fd-v10.4.2-x86_64-pc-windows-msvc\\fd.exe")
+    vim.keymap.set("n", "<leader>ff", function()
+      builtin.find_files({
+        find_command = { fd_path, "--type", "f", "--color", "never" },
+      })
+    end, {})
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
