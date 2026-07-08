@@ -11,7 +11,6 @@ return {
         preview = {
           treesitter = false,
         },
-        find_command = { "fd", "--type", "f", "--color", "never" },
         path_display = function(_, path)
           local limit = 15
           if #path <= limit then
@@ -24,7 +23,13 @@ return {
 
     local builtin = require("telescope.builtin")
 
-    vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+    local fd_find_files = function()
+      builtin.find_files({
+        find_command = { "fd", "--type", "f", "--color", "never", "--absolute-path" },
+      })
+    end
+
+    vim.keymap.set("n", "<leader>ff", fd_find_files, {})
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
