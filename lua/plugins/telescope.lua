@@ -11,6 +11,7 @@ return {
         preview = {
           treesitter = false,
         },
+        find_command = { "fd", "--type", "f", "--color", "never" },
         path_display = function(_, path)
           local limit = 15
           if #path <= limit then
