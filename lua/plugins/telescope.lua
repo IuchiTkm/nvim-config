@@ -25,7 +25,7 @@ return {
 
     local fd_find_files = function()
       builtin.find_files({
-        find_command = { "fd", "--type", "f", "--color", "never", "--absolute-path" },
+        find_command = { "fd", "--type", "f", "--color", "never" },
       })
     end
 
