@@ -34,5 +34,6 @@ if vim.fn.filereadable("/.dockerenv") == 1 then
 end
 vim.opt.splitright = true
 vim.opt.wrap = false
+vim.opt.swapfile = false
 
 vim.opt.fileencodings = "ucs-bom,utf-8,cp932,default,latin1"
