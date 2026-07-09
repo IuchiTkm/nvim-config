@@ -6,6 +6,52 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
     vim.opt_local.expandtab = true
+
+    local function dotnet_build()
+      vim.notify("ビルド中...", vim.log.levels.INFO)
+      local output = {}
+      local root = vim.fs.root(0, function(name)
+        return name:match("%.sln$") ~= nil or name:match("%.csproj$") ~= nil
+      end) or vim.fn.getcwd()
+
+      vim.fn.jobstart("dotnet build", {
+        cwd = root,
+        stdout_buffered = true,
+        on_stdout = function(_, data)
+          if data then vim.list_extend(output, data) end
+        end,
+        on_stderr = function(_, data)
+          if data then vim.list_extend(output, data) end
+        end,
+        on_exit = function(_, code)
+          local qf_items = {}
+          for _, line in ipairs(output) do
+            local file, lnum, col, etype, msg = line:match("^(.-)%((%d+),(%d+)%):%s+(%a+)%s+%a+%d+:%s+(.+)$")
+            if file then
+              msg = msg:gsub("%s*%[.+%]%s*$", "")
+              table.insert(qf_items, {
+                filename = file,
+                lnum = tonumber(lnum),
+                col = tonumber(col),
+                type = etype:lower():sub(1, 1) == "e" and "E" or "W",
+                text = msg,
+              })
+            end
+          end
+          vim.schedule(function()
+            vim.fn.setqflist(qf_items)
+            if #qf_items > 0 then
+              vim.cmd("copen")
+              vim.notify("ビルド失敗: " .. #qf_items .. " 件", vim.log.levels.ERROR)
+            else
+              vim.notify("ビルド成功!", vim.log.levels.INFO)
+            end
+          end)
+        end,
+      })
+    end
+
+    vim.keymap.set("n", "<leader>b", dotnet_build, { buffer = true, silent = true })
   end,
 })
 
