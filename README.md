@@ -7,7 +7,8 @@
 - [lualine](#lualine) - ステータスライン
 - [coc.nvim](#cocnvim) - LSP / 補完
 - [CopilotChat](#copilotchat) - GitHub Copilot チャット
-- [render-markdown](#render-markdown) - Markdown プレビュー
+- [render-markdown](#render-markdown) - Markdown バッファ内リッチ表示
+- [markdown-preview.nvim](#markdown-previewnvim) - Markdownブラウザプレビュー
 - [winresizer](#winresizer) - ウィンドウリサイズ
 - [lazygit.nvim](#lazygitnvim) - Git UI
 - [toggleterm.nvim](#toggletermnvim) - ターミナル
@@ -53,7 +54,8 @@
 ### Markdown
 | キー | 動作 |
 |------|------|
-| `\mp` | Markdownプレビューのオン/オフ |
+| `\mp` | バッファ内リッチ表示のオン/オフ |
+| `\mb` | ブラウザプレビューのオン/オフ |
 
 ### C#（.cs ファイルのみ）
 | キー | 動作 |
@@ -172,7 +174,25 @@ Markdownファイルをバッファ内でリッチ表示するプラグイン。
 
 | キー | 動作 |
 |------|------|
-| `\mp` | プレビューのオン/オフ切り替え |
+| `\mp` | バッファ内リッチ表示のオン/オフ切り替え |
+
+---
+
+### markdown-preview.nvim
+
+Markdownファイルをブラウザでリアルタイムプレビューするプラグイン。
+
+| キー | 動作 |
+|------|------|
+| `\mb` | ブラウザプレビューのオン/オフ |
+
+**コマンド**
+
+| コマンド | 動作 |
+|---|---|
+| `:MarkdownPreview` | プレビュー開始 |
+| `:MarkdownPreviewStop` | プレビュー終了 |
+| `:MarkdownPreviewToggle` | 切り替え |
 
 ---
 
