@@ -16,6 +16,7 @@
 - [vscode.nvim](#vscodenvim) - VS2022風カラースキーム
 - [nvim-treesitter](#nvim-treesitter) - シンタックスハイライト
 - [lsp_signature.nvim](#lsp_signaturenvim) - 関数シグネチャのポップアップ表示
+- [claudecode.nvim](#claudecodenvim) - Claude Code連携
 - [tobira.nvim](#tobiraanvim) - Vimコマンド学習支援
 - [neogen](#neogen) - C# XMLサマリー自動生成
 - [hlchunk.nvim](#hlchunknvim) - インデントガイドとブロックハイライト
@@ -50,6 +51,14 @@
 | キー | 動作 |
 |------|------|
 | `\ccq` | バッファ内容を使ってCopilotにチャット |
+
+### Claude Code
+| キー | 動作 |
+|------|------|
+| `\ac` | Claude Codeウィンドウの開閉 |
+| `\af` | Claude Codeにフォーカス |
+| `\as` | ビジュアル選択範囲をClaudeに送信 |
+| `\aa` | 現在のファイルをコンテキストに追加 |
 
 ### Markdown
 | キー | 動作 |
@@ -324,6 +333,29 @@ void Console.WriteLine(string value)
 /// <returns></returns>
 public string GetUser(int id) { ... }
 ```
+
+---
+
+### claudecode.nvim
+
+Claude Code をNeovim内で操作できるプラグイン。`folke/snacks.nvim` に依存。
+
+| キー | 動作 |
+|---|---|
+| `\ac` | Claude Codeウィンドウの開閉 |
+| `\af` | Claude Codeにフォーカス |
+| `\as` | ビジュアル選択範囲をClaudeに送信 |
+| `\aa` | 現在のファイルをコンテキストに追加 |
+
+**主なコマンド**
+
+| コマンド | 動作 |
+|---|---|
+| `:ClaudeCode` | ウィンドウの表示/非表示 |
+| `:ClaudeCodeSend` | 選択範囲を送信 |
+| `:ClaudeCodeAdd <file>` | ファイルをコンテキストに追加 |
+| `:ClaudeCodeDiffAccept` | 変更案を受け入れ |
+| `:ClaudeCodeDiffDeny` | 変更案を却下 |
 
 ---
 
