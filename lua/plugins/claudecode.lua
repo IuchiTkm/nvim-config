@@ -3,7 +3,13 @@ return {
     "folke/snacks.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      notifier = {
+        enabled = true,
+        top_down = false,
+        margin = { top = 0, right = 1, bottom = 1 },
+      },
+    },
   },
   {
     "coder/claudecode.nvim",
